@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "deploy": "serverless deploy --aws-profile serverless",
+    "remove": "serverless remove --aws-profile serverless"
+  },
+  "devDependencies": {
+    "serverless": "^1.47.0",
+    "serverless-rust": "^0.3.5"
+  }
+}

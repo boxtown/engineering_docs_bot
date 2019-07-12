@@ -1,0 +1,15 @@
+[package]
+name = "eddy"
+version = "0.1.0"
+authors = ["Michael Ma"]
+edition = "2018"
+
+[dependencies]
+failure = "0.1"
+
+rusoto_core = "0.40.0"
+rusoto_comprehend = "0.40.0"
+
+redis = "0.10.0"
+
+serde = "1.0"

@@ -1,0 +1,31 @@
+service: engineering-docs-bot
+
+provider:
+  name: aws
+  runtime: rust
+  memorySize: 128
+
+package:
+  individually: true
+
+plugins:
+  - serverless-rust
+
+custom:
+  environment: ${file(./env.yml):${opt:stage, default}}
+
+functions:
+  indexer:
+    handler: indexer
+    environment:
+      github_token: ${self:custom.environment:github_token}
+      repo_path: ${self:custom.environment:repo_path}
+
+  slack_bot:
+    handler: slack_bot
+    events:
+      - http:
+          path: /
+          method: POST
+    environment:
+      slack_signing_secret: ${self:custom.environment:slack_signing_secret}
